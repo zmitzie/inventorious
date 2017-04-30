@@ -1,0 +1,42 @@
+<body class="hold-transition login-page">
+<div class="login-box">
+  <div class="login-logo">
+    <a href="index.html"><b>fossaegean</b>inv</a>
+  </div>
+  <!-- /.login-logo -->
+  <div class="login-box-body">
+    <p class="login-box-msg">Enter your new password below</p>
+
+    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+      <%= devise_error_messages! %>
+      <%= f.hidden_field :reset_password_token %>
+
+
+      <div class="form-group has-feedback">
+        <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "New password" %>
+        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+      </div>
+      <div class="form-group has-feedback">
+        <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", placeholder: "Type new password again" %>
+        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+      </div>
+      <div class="row">
+
+        <div class="col-xs-8">
+          <div class="checkbox icheck">
+            <%= link_to "Back to login", user_session_path %>
+          </div>
+        </div>
+        <!-- /.col -->
+        <div class="col-xs-4">
+            <%= f.submit "Submit", class: "btn btn-primary btn-block btn-flat" %>
+        </div>
+        <% end %>
+        <!-- /.col -->
+      </div>
+  </div>
+  <!-- /.login-box-body -->
+</div>
+
+<!-- /.login-box -->
+</body>

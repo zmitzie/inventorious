@@ -1,0 +1,27 @@
+<% unless flash.empty? %>
+<script type="text/javascript">
+  $(document).ready(function () {
+    toastr.options = {
+      "closeButton": false,
+      "debug": true,
+      "newestOnTop": false,
+      "progressBar": false,
+      "positionClass": "toast-top-right",
+      "preventDuplicates": false,
+      "onclick": null,
+      "showDuration": "300",
+      "hideDuration": "500",
+      "timeOut": "1500",
+      "extendedTimeOut": "500",
+      "showEasing": "swing",
+      "hideEasing": "linear",
+      "showMethod": "fadeIn",
+      "hideMethod": "fadeOut"
+    }
+    <% flash.each do |f| %>
+    <% type = f[0].to_s.gsub('alert', 'error').gsub('notice', 'success') %>
+    toastr['<%= type %>']('<%= f[1] %>');
+    <% end %>
+  });
+</script>
+<% end %>

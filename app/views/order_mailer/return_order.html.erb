@@ -1,0 +1,11 @@
+<p>Some items have been marked as "returned" in Inventorious.</p>
+<br>
+<b>Item name:</b> <%= @order.item.name%>
+<br>
+<b>Quantity:</b> <%= @order.quantity%>
+<br>
+<b>Borrowed by:</b> <%= @order.member.name%>
+<br>
+<b>Marked as "returned" by user:</b> <%= @user.name%>, with IP: <%= @user.current_sign_in_ip%>
+
+<p>These items are now available</p>

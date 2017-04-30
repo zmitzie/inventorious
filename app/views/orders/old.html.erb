@@ -1,0 +1,77 @@
+<body class="hold-transition skin-blue sidebar-mini">
+  <div class="wrapper">
+    <%= render 'layouts/header' %>
+    <div class="content-wrapper">
+
+      <!-- Content Header (Page header) -->
+      <section class="content-header">
+        <h1>
+          Past Orders
+        </h1>
+        <ol class="breadcrumb">
+          <li>
+            <a href="#">
+              <i class="fa fa-home"></i>
+              Home Page</a>
+          </li>
+          <li class="active">Past Orders</li>
+        </ol>
+      </section>
+
+      <section class="content">
+        <div class="row">
+          <div class="col-xs-12">
+            <!-- Main data table -->
+            <div class="box">
+
+              <!-- /.box-header -->
+              <div class="box-body">
+                <table id="example1" class="table table-bordered table-striped">
+                  <thead>
+                    <tr>
+                      <th>Order Id</th>
+                      <th>Category</th>
+                      <th>Item</th>
+                      <th>Quantity</th>
+                      <th>Borrowed at</th>
+                      <th>Returned at</th>
+                      <th>Member</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% @inactive.each do |order| %>
+                    <tr>
+                      <td><%= order.id %></td>
+                      <td><%= order.item.category %></td>
+                      <td><%= order.item.name %></td>
+                      <td><%= order.quantity %></td>
+                      <td><%= order.created_at.strftime("%d/%m/%Y, %H:%M") %></td>
+                      <td><%= order.updated_at.strftime("%d/%m/%Y, %H:%M") %></td>
+                      <td><%= order.member.name %></td>
+                    </tr>
+                    <% end %>
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.box-body -->
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <%= render 'layouts/footer' %>
+  </div>
+  <script>
+    $(function () {
+      $("#example1").DataTable();
+      $('#example2').DataTable({
+        "paging": true,
+        "lengthChange": false,
+        "searching": false,
+        "ordering": true,
+        "info": true,
+        "autoWidth": false
+      });
+    });
+  </script>
+</body>

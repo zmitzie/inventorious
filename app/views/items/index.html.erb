@@ -1,0 +1,82 @@
+<body class="hold-transition skin-blue sidebar-mini">
+  <div class="wrapper">
+    <%= render 'layouts/header' %>
+    <div class="content-wrapper">
+
+      <!-- Content Header (Page header) -->
+      <section class="content-header">
+        <h1>
+          Inventory
+          <small>Items</small>
+        </h1>
+        <ol class="breadcrumb">
+          <li>
+            <a href="#">
+              <i class="fa fa-home"></i>
+              Home Page</a>
+          </li>
+          <li class="active">Check Inventory</li>
+        </ol>
+      </section>
+
+      <section class="content">
+        <div class="row">
+          <div class="col-xs-12">
+            <!-- Main data table -->
+            <div class="box">
+
+              <!-- /.box-header -->
+              <div class="box-body">
+                <table id="example1" class="table table-bordered table-striped">
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Category</th>
+                      <th>Name</th>
+                      <th>Description</th>
+                      <th>Quantity</th>
+                      <th>Available Qty</th>
+                      <th>Edit</th>
+                      <th>Delete</th>
+                      <th>Borrow</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% @items.each do |item| %>
+                    <tr>
+                      <td><%= item.id %></td>
+                      <td><%= item.category %></td>
+                      <td><%= item.name %></td>
+                      <td><%= item.description %></td>
+                      <td><%= item.quantity %></td>
+                      <td><%= item.remaining_quantity %></td>
+                      <td><%= link_to 'Edit', edit_item_path(item) %></td>
+                      <td><%= link_to 'Delete', item, method: :delete, data: { confirm: 'Are you sure you want to delete this item?' } %></td>
+                      <td><%= link_to 'Borrow', new_order_path(item: item.id) %></td>
+                    </tr>
+                    <% end %>
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.box-body -->
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <%= render 'layouts/footer' %>
+  </div>
+  <script>
+    $(function () {
+      $("#example1").DataTable();
+      $('#example2').DataTable({
+        "paging": true,
+        "lengthChange": false,
+        "searching": false,
+        "ordering": true,
+        "info": true,
+        "autoWidth": false
+      });
+    });
+  </script>
+</body>

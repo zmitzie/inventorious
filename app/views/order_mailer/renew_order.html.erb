@@ -1,0 +1,11 @@
+<p>Some items have been renewed for 7 days in Inventorious.</p>
+<br>
+<b>Item name:</b> <%= @order.item.name%>
+<br>
+<b>Quantity:</b> <%= @order.quantity%>
+<br>
+<b>Return by:</b> <%= @order.expire_at%>
+<br>
+<b>Member name:</b> <%= @order.member.name%>
+<br>
+<b>Renewed by user:</b> <%= @user.name%>, with IP: <%= @user.current_sign_in_ip%>

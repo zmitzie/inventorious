@@ -1,0 +1,91 @@
+<body class="hold-transition skin-blue sidebar-mini">
+  <div class="wrapper">
+    <%= render 'layouts/header' %>
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      <!-- Content Header (Page header) -->
+      <section class="content-header">
+        <h1>
+          Add Item
+        </h1>
+        <ol class="breadcrumb">
+          <li>
+            <a href="#">
+              <i class="fa fa-home"></i>
+              Home Page</a>
+          </li>
+          <li class="active">Add Item</li>
+        </ol>
+      </section>
+
+      <!-- Main content -->
+      <section class="content">
+        <div class="row">
+          <!-- left column -->
+          <div class="col-md-6">
+            <!-- general form elements -->
+            <div class="box box-header">
+              <div class="box-header with-border">
+                <h3 class="box-title">Basic Information</h3>
+              </div>
+              <!-- /.box-header -->
+              <!-- form start -->
+              <%= form_for @item do |f| %>
+              <% if @item.errors.any? %>
+              <div id="error_explanation">
+                <h2><%= pluralize(@item.errors.count, "error") %>
+                  prohibited this item from being saved:</h2>
+                <ul>
+                  <% @item.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                  <% end %>
+                </ul>
+              </div>
+              <% end %>
+              <div class="box-body">
+                <div class="form-group">
+                  <label>Name</label>
+                  <%= f.text_field :name, class: "form-control", placeholder: "Enter Name", required: true  %>
+                </div>
+                <div class="form-group">
+                  <label>Description</label>
+                  <%= f.text_area :description, class: "form-control", rows: "3", laceholder: "Enter Description"%>
+                </div>
+                <div class="form-group">
+                  <label>Quantity</label>
+                  <%= f.number_field :quantity, class: "form-control", placeholder: "Enter Quantity", required: true  %>
+                </div>
+                <div class="form-group">
+                  <label>Category</label>
+                  <%= f.select(:category, [["Books","Books"], ["Magazines","Magazines"], ["Electronics","Electronics"], ["Hardware","Hardware"], ["Tools","Tools"]], {}, { :class => 'form-control' })%>
+                </div>
+              </div>
+              <!-- /.box-body -->
+              <div class="box-footer">
+                <%= f.submit "Submit", class: "btn btn-primary"%>
+              </div>
+              <% end %>
+            </div>
+            <!-- /.box -->
+          </div>
+          <!--/.col (right) -->
+        </div>
+        <!-- /.row -->
+      </section>
+      <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+    <footer class="main-footer">
+      <div class="pull-right hidden-xs">
+        <b>Version</b>
+        0.1
+      </div>
+      Content available under
+      <a href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0</a>.
+    </footer>
+    <!-- ./wrapper -->
+    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+    <script>
+      $.widget.bridge('uibutton', $.ui.button);
+    </script>
+  </body>
