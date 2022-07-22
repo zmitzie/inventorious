@@ -1,7 +1,8 @@
 # Inventorious
 
-An inventory management and tracking system built with Ruby on Rails 5.
+An inventory management and tracking system built with Ruby on Rails 7.
 
+## Update info
 !["Dashboard"](https://github.com/zmitzie/inventorious/blob/master/dashboard_screenshot.png "Dashboard")
 
 Demo: [https://inventorious.herokuapp.com/](https://inventorious.herokuapp.com/)
@@ -13,16 +14,19 @@ Users (who have access to the app), can specify items, members (who can borrow i
 
 ### Install Rails
 
-* Make sure you have a Ruby version > 2.2.2 installed in your system
+* Make sure you have a Ruby version > 3.1.2 installed in your system
 * Install [RubyGems](https://rubygems.org/pages/download)
-* run ```gem install rails -v 5.0.2```
+* run ```gem install rails -v 7.0.3.1```
 
 ### Download Repo
 
 * Download this repo, and unzip it
 * ``` cd inventorious``` to cd into the folder
-* ``` bundle ```
+* ``` bundle update```
+* ``` configure your Postgres DB and change creds```
+* ``` create DB > rails db:create```
 * ``` rails db:migrate db:seed ```
+* ``` rails s ```
 
 ### Set Enviroment Variables
  You need to set 6 enviroment variables, for emails to be delivered (for ActionMailer, password reset, etc).
